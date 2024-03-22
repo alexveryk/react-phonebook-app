@@ -1,10 +1,16 @@
 import { Component } from "react";
 import "./App.css";
 import { nanoid } from "nanoid";
+import { Contacts } from "./components/Contacts/Contacts";
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+    ],
     name: "",
     filter: "",
   };
@@ -29,9 +35,6 @@ export class App extends Component {
     form.reset();
   };
 
-  handleFilter = (evt) => {
-    this.setState({ filter: evt.currentTarget.value });
-  };
 
   filterContacts = () => {
     const { contacts, filter } = this.state;
@@ -58,18 +61,11 @@ export class App extends Component {
             onChange={this.handleChange}
             required
             placeholder="Enter number"
+            pattern="\d*"
           />
           <button type="submit"> Add contact</button>
         </form>
-        <h2> Contacts</h2>
-        <input type="text" name="filter" onChange={this.handleFilter} />
-        <ul>
-          {this.filterContacts().map((contact) => (
-            <li key={contact.id}>
-              {contact.name} ---- {contact.number}
-            </li>
-          ))}
-        </ul>
+        <Contacts handleChange={this.handleChange} contacts={this.filterContacts}/>
       </>
     );
   }
