@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Component } from "react";
+import "./App.css";
+import { nanoid } from "nanoid";
 
-function App() {
-  const [count, setCount] = useState(0)
+export class App extends Component {
+  state = {
+    contacts: [],
+    name: "",
+    filter: "",
+  };
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  handleChange = (evt) => {
+    const { name, value } = evt.currentTarget;
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+    const form = evt.currentTarget;
+    const name = form.elements.name.value;
+    const number = form.elements.number.value;
+
+    this.setState((prevState) => {
+      return {
+        contacts: [...prevState.contacts, { id: nanoid(), name, number }],
+        name: "",
+      };
+    });
+    form.reset();
+  };
+
+  handleFilter = (evt) => {
+    this.setState({ filter: evt.currentTarget.value });
+  };
+
+  filterContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()),
+    );
+  };
+
+  render() {
+    return (
+      <>
+        <h1> Phonebook </h1>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            onChange={this.handleChange}
+            required
+            placeholder="Enter name"
+          />
+          <input
+            type="tel"
+            name="number"
+            onChange={this.handleChange}
+            required
+            placeholder="Enter number"
+          />
+          <button type="submit"> Add contact</button>
+        </form>
+        <h2> Contacts</h2>
+        <input type="text" name="filter" onChange={this.handleFilter} />
+        <ul>
+          {this.filterContacts().map((contact) => (
+            <li key={contact.id}>
+              {contact.name} ---- {contact.number}
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  }
 }
-
-export default App
