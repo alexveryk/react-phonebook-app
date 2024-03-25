@@ -22,8 +22,10 @@
   cursor: pointer;
   color: #fff;
   transition: color 0.3s ease-in-out;
-  background-color: tomato;
+  background-color: #fb6044;
   border-radius: 5px;
   padding: 5px;
 }
-.contactlist__btn: hover, co;
+.contactlist__btn:hover, .contactlist__btn:focus {
+    background-color:#e5381a;
+}
