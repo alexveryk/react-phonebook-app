@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Filter.module.css';
 
 export class Filter extends Component {
   render() {
@@ -6,8 +8,18 @@ export class Filter extends Component {
 
     return (
       <>
-        <input type="text" name="filter" onChange={handleChange} />
+        <input
+          className={styles.filter}
+          type="text"
+          name="filter"
+          onChange={handleChange}
+          placeholder="Find contacts by name"
+        />
       </>
     );
   }
 }
+
+Filter.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+};

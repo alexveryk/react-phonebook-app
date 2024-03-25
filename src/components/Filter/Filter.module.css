@@ -1,0 +1,12 @@
+.filter {
+  width: calc(100% - 20px);
+  height: 40px;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+.filter:focus {
+  border-color: #007bff;
+}

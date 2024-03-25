@@ -1,0 +1,33 @@
+.contactFormContainer {
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactForm__input {
+  width: auto;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+.contactForm__input:focus {
+  border-color: #007bff;
+}
+
+.contactForm__btn {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
