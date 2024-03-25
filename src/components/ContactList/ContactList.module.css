@@ -18,14 +18,13 @@
 
 .contactList__btn {
   border: none;
-  background-color: transparent;
   cursor: pointer;
   color: #fff;
-  transition: color 0.3s ease-in-out;
   background-color: #fb6044;
   border-radius: 5px;
   padding: 5px;
 }
-.contactlist__btn:hover, .contactlist__btn:focus {
+
+.contactList__btn:hover, .contactList__btn:focus {
     background-color:#e5381a;
 }

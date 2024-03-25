@@ -1,6 +1,11 @@
-.appContainer {
+.app__container {
   max-width: 768px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.app__header {
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }

@@ -56,13 +56,13 @@ export class App extends Component {
 
   render() {
     return (
-      <div className={styles.appContainer}>
-        <h1> Phonebook </h1>
+      <div className={styles.app__container}>
+        <h1 className={styles.app__header}> Phonebook </h1>
         <ContactForm
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
-        <h2>Contacts</h2>
+        <h2 className={styles.app__header}>Contacts</h2>
         <Filter handleChange={this.handleChange} />
         <ContactList
           contacts={this.filterContacts}
