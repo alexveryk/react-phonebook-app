@@ -1,4 +1,8 @@
 .contactFormContainer {
+  border: 1px solid #bebbbb;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 24px;
 }
 
 .contactForm {

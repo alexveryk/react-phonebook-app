@@ -12,14 +12,14 @@ export class App extends Component {
     filter: '',
   };
 
-  async componentDidMount() {
-    const contactsData = await localStorage.getItem('contacts');
+  componentDidMount() {
+    const contactsData = localStorage.getItem('contacts');
     const parsedContactsData = JSON.parse(contactsData);
 
     this.setState({ contacts: parsedContactsData });
   }
 
-  async componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.contacts !== prevState.contacts) {
       const contactsJSON = JSON.stringify(this.state.contacts);
       localStorage.setItem('contacts', contactsJSON);
@@ -71,13 +71,15 @@ export class App extends Component {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
-        <h2 className={styles.app__header}>Contacts</h2>
-        <Filter handleChange={this.handleChange} />
-        <ContactList
-          contacts={this.filterContacts}
-          handleChange={this.handleChange}
-          deleteContact={this.deleteContact}
-        />
+        <div className={styles.app__contactContainer}>
+          <h2 className={styles.app__header}>Contacts</h2>
+          <Filter handleChange={this.handleChange} />
+          <ContactList
+            contacts={this.filterContacts}
+            handleChange={this.handleChange}
+            deleteContact={this.deleteContact}
+          />
+        </div>
       </div>
     );
   }
