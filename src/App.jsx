@@ -14,6 +14,9 @@ export class App extends Component {
 
   componentDidMount() {
     const contactsData = localStorage.getItem('contacts');
+    if(contactsData === null) {
+      return this.setState({ contacts: [] });
+    }
     const parsedContactsData = JSON.parse(contactsData);
 
     this.setState({ contacts: parsedContactsData });
@@ -52,6 +55,7 @@ export class App extends Component {
 
   filterContacts = () => {
     const { contacts, filter } = this.state;
+    console.log("filter --->>:", typeof filter)
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
