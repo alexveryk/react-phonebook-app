@@ -15,10 +15,10 @@ export class App extends Component {
   componentDidMount() {
     const contactsData = localStorage.getItem('contacts');
     if(contactsData === null) {
-      return this.setState({ contacts: [] });
+      return;
     }
-    const parsedContactsData = JSON.parse(contactsData);
 
+    const parsedContactsData = JSON.parse(contactsData);
     this.setState({ contacts: parsedContactsData });
   }
 
